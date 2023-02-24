@@ -56,6 +56,7 @@ button svg {
   font-size: clamp(4rem, 4rem + 10vw, 8.8rem);
   font-weight: 700;
   display: flex;
+  margin-bottom: 1.6rem;
 }
 
 #controls {
@@ -74,4 +75,5 @@ footer {
   /* Aligning to end with grid */
   justify-self: end;
   align-self: end;
+  padding: 0 4rem 3.2rem 0;
 }
