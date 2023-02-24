@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  /* VARIABLES */
+  --bg-color: #121214;
+  --base-color: 194;
+  --bg-primary-light: hsla(var(--base-color), 100%, 63%, 0.13);
+  --primary-color: hsl(var(--base-color), 100%, 63%); 
+  --text-color: #FFFFFF;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Roboto', sans-serif;
+
+  /* Aligning to center with grid */
+  display: grid;
+  min-height: 100vh;
+}
+
+main {
+  /* Aligning to center with grid */
+  justify-self: center; /*grid property*/
+  align-self: end; /*grid property*/
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+/* Changes buttom colors based on primary color - Helps make maintenance easier */ 
+.controls__play svg path,
+.controls__pause svg path,
+.sound--on svg path {
+  fill: var(--primary-color);
+}
+
+button svg {
+  width: clamp(3.2rem, 2rem + 12vw, 6.4rem);
+}
+
+#timer {
+  font-size: clamp(4rem, 4rem + 10vw, 8.8rem);
+  font-weight: 700;
+  display: flex;
+}
+
+#controls {
+  background-color: var(--bg-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px; /* pill */
+  gap: 3.2rem;
+  width: clamp(10rem, 10rem + 30vw, 22.8rem);
+  height: clamp(8rem, 5rem + 10vw, 10.8rem);
+
+}
+
+footer {
+  /* Aligning to end with grid */
+  justify-self: end;
+  align-self: end;
+}
