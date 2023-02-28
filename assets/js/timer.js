@@ -6,8 +6,10 @@ export default function Timer({
   let timerTimeOut
   let minutes = Number(minutesDisplay.textContent) // user will provide value through prompt
 
-  function updateDisplay(minutes, seconds) {
-    minutesDisplay.textContent = String(minutes).padStart(2, '0')
+  function updateDisplay(newMinutes, seconds) {
+    newMinutes = newMinutes === undefined ? minutes : newMinutes
+    seconds = seconds === undefined ? 0 : seconds
+    minutesDisplay.textContent = String(newMinutes).padStart(2, '0')
     secondsDisplay.textContent = String(seconds).padStart(2, '0')
   }
 
@@ -22,17 +24,19 @@ export default function Timer({
       let seconds = Number(secondsDisplay.textContent)
       // we don't want to change the original minutes, so we create the countdownMinutes inside the setTimeout
       let countdownMinutes = Number(minutesDisplay.textContent)
+      let isFinished = countdownMinutes <= 0 && seconds <= 0
 
       updateDisplay(countdownMinutes, 0)
 
-      if (countdownMinutes <= 0) {
+      if (isFinished) {
         resetControls()
+        updateDisplay()
 
         return
       }
 
       if (seconds <= 0) {
-        seconds = 2
+        seconds = 60
 
         countdownMinutes = countdownMinutes - 1 // same as: --minutes
         // wrong: updateDisplay(String(countdownMinutes - 1), seconds)
